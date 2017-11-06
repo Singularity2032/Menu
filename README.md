@@ -24,25 +24,48 @@
       open ssl encryption of sinlge files or directories
   
   SSH Menu
-      ws
+      ssh servcies:
+	  start and restart
+	  end
+	  ssh of a file
   
   Reconnaissance Menu (Nmap)
-      sdg
+      nmap scripts
+	  stealth recon
+	  loud recon
+	  all loud recon
   
   Parsing Menu
-      sdg
+      Parsing HTML
+	  Parsing fields of a dump
+	  Parsing users
+	  Parsing Information
       
   System Information
-      dsf
+      hostname
+	  logged on users
+	  date 
+	  time
   
   Forensics Menu
-      dfg
+      create a image
+	  view partitions 
+	  secure erase
+	  create partition
   
   Exploitation Menu
-      sdg
+      install msf and configure msf
+	  find a payload
+	  find a exploit
+	  create a reverse shell
+
   
   Post-Exploitation Menu
-      dfg
+      create a backdoor
+	  netcat files
+	  migrate processess
+	  persistance scripts
   
   Firewall Config (IPtables)
-      zdc
+      firewall configration
+
