@@ -163,14 +163,12 @@ case $choice in
 		echo "Starting SSH services"
 		sudo service ssh start
 		sudo service ssh status
-		q
 		;;
 
 		"d"|"D")
 		echo "Ending SSH services"
 		sudo service ssh stop
 		sudo service ssh status
-		q
 		;;
 
 		"e"|"E")
@@ -209,8 +207,11 @@ case $choice in
 		echo "The IP address or range is what"
 		echo ""
 		read $scanrange
+		echo ""
+		echo "What would you like to save the output as? "
+		read $savefiletext
 		echo "Ping sweeping $scanrange"
-		sudo nmap -sn $scanrange
+		sudo nmap -sn $scanrange > $savefiletext
         ;;
         
 		"d"|"D")
@@ -551,6 +552,7 @@ case $choice in
 		echo ""
 		sudo iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP
 		sudo iptables -L -v
+		echo "Complete"
 		;;
 	    
         "e"|"E")

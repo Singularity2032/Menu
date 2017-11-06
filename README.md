@@ -21,7 +21,7 @@
   
   # BRIEF DESCRIPTION OF EACH MENU 
   Encrypting/ Decrypting a File
-      dfv
+      open ssl encryption of sinlge files or directories
   
   SSH Menu
       ws
