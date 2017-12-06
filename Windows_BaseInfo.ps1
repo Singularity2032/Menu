@@ -4,12 +4,19 @@ echo %DATE% %TIME%
 
 Write-Host"Getting the hostname"
 hostname
+Write-Host ""
 Write-Host "Getting the Username"
 echo %username%
+Write-Host ""
 Write-Host "Getting the current firewall state"\
 netsh firewall show state
+Write-Host ""
 Write-Host "Showing firewall config"
 netsh firewall show config
+Write-Host "Grabbing current tasks list"
+tasklist /SVC
+Write-Host "All of the startup programs"
+net start 
 
 systeminfo
 psloggedon \\computername 				#users logged on to the system
@@ -27,45 +34,45 @@ route print
 #Below is the script to run admin scripts with escilation 
 
 # Get the ID and security principal of the current user account
-$myWindowsID=[System.Security.Principal.WindowsIdentity]::GetCurrent()
-$myWindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
+#$myWindowsID=[System.Security.Principal.WindowsIdentity]::GetCurrent()
+#$myWindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($myWindowsID)
  
 # Get the security principal for the Administrator role
-$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+#$adminRole=[System.Security.Principal.WindowsBuiltInRole]::Administrator
  
 # Check to see if we are currently running "as Administrator"
-if ($myWindowsPrincipal.IsInRole($adminRole))
-   {
+#if ($myWindowsPrincipal.IsInRole($adminRole))
+   #{
    # We are running "as Administrator" - so change the title and background color to indicate this
-   $Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Elevated)"
-   $Host.UI.RawUI.BackgroundColor = "DarkBlue"
-   clear-host
-   }
-else
-   {
+   #$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Elevated)"
+   #$Host.UI.RawUI.BackgroundColor = "DarkBlue"
+   #clear-host
+   #}
+#else
+  # {
    # We are not running "as Administrator" - so relaunch as administrator
    
    # Create a new process object that starts PowerShell
-   $newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
+   #$newProcess = new-object System.Diagnostics.ProcessStartInfo "PowerShell";
    
    # Specify the current script path and name as a parameter
-   $newProcess.Arguments = $myInvocation.MyCommand.Definition;
+   #$newProcess.Arguments = $myInvocation.MyCommand.Definition;
    
    # Indicate that the process should be elevated
-   $newProcess.Verb = "runas";
+   #$newProcess.Verb = "runas";
    
    # Start the new process
-   [System.Diagnostics.Process]::Start($newProcess);
+   #[System.Diagnostics.Process]::Start($newProcess);
    
    # Exit from the current, unelevated, process
-   exit
-   }
+   #exit
+   #}
  
 # Run your code that needs to be elevated here
-wevtutil -el | ForEach-Object{Get-EventLog -LogName 'Kaspersky Event Log' | Export-Csv -Path C:\Users\AMAMATTH.KNOWN-UNIVERSE\Desktop  -Append} 
+#wevtutil -el | ForEach-Object{Get-EventLog -LogName 'Kaspersky Event Log' | Export-Csv -Path C:\Users\AMAMATTH.KNOWN-UNIVERSE\Desktop  -Append} 
 
 
 
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+#$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 #Admin requried for scipt
  
