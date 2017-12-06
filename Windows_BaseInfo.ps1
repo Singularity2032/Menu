@@ -2,7 +2,15 @@
 ##Live Triage in Envioment
 echo %DATE% %TIME%
 
+Write-Host"Getting the hostname"
 hostname
+Write-Host "Getting the Username"
+echo %username%
+Write-Host "Getting the current firewall state"\
+netsh firewall show state
+Write-Host "Showing firewall config"
+netsh firewall show config
+
 systeminfo
 psloggedon \\computername 				#users logged on to the system
 
